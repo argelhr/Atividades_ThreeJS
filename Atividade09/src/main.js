@@ -105,21 +105,7 @@ function move(patao) {
 
 	patao.rotation.z += hasKey("KeyD") ? -.1 : 0
 	patao.rotation.z += hasKey("KeyA") ? .1 : 0
-	console.log("x: " + patao.position.x)
-	console.log("y: " + patao.position.y)
-	console.log("z: " + patao.position.z)
-
-	// let moveX = 0
-	// let moveY = 0
-
-	// if (hasKey('KeyW')) {
-	// 	moveX = Math.cos(pz)
-	// 	moveY = Math.sin(pz)
-	// }
-	// if (hasKey('KeyS')) {
-	// 	moveX = -Math.cos(pz)
-	// 	moveY = -Math.sin(pz)
-	// }
+	
 
 	let pz = patao.rotation.z
 
@@ -128,19 +114,7 @@ function move(patao) {
 	patao.position.z += hasKey('KeyS') ? -Math.cos(pz) * velocidade : 0
 	patao.position.x += hasKey('KeyS') ? -Math.sin(pz) * velocidade : 0
 
-	// if (hasKey("Enter")) {
-	// 	if (Math.cos(pz) > 0) {
-	// 		if (Math.sin(patao.rotation.x > 0))
-	// 			patao.rotation.x += Math.cos(pz) * 0.1
-	// 		patao.rotation.y += Math.sin(pz) * 0.01
-	// 	}
-	// 	else {
-	// 		patao.rotation.x += - Math.cos(pz) * 0.1
-	// 		patao.rotation.y += - Math.sin(pz) * 0.1
-	// 	}
-	// }
-
-	if (hasKey("Enter")) {
+		if (hasKey("Enter")) {
 		if (quac.paused) {
 			quac.currenttime = 0
 			quac.play()
