@@ -23,7 +23,7 @@ const scene = new THREE.Scene()
 scene.background = new THREE.Color(0x000000)
 
 const camera = new THREE.PerspectiveCamera(
-	40, window.innerWidth / window.innerHeight, 0.1, 2000
+	40, window.innerWidth / window.innerHeight, 0.1, 10000
 );
 
 camera.position.z = -300
@@ -56,8 +56,9 @@ scene.add(light);
 // scene.add(sphere)
 
 //criacao da floresta
-const florestBox = await createSkyBox('florestBox', 400)
-florestBox.position.y = 200
+const size = 1600
+const florestBox = await createSkyBox('florestBox', size)
+florestBox.position.y = size/2
 scene.add(florestBox)
 
 const PatoPath = './assets/pato/'
@@ -81,19 +82,19 @@ const patuveJoystick = { x: null, y: null }
 patuve.scale.setScalar(1)//redimensiona o objeto
 patuve.position.y = 0
 
-patuve.rotation.x = 4.725
+patuve.rotation.x = -Math.PI/2
 scene.add(patuve)
 keyDownUp(window)
 animate()
 
 function animate() {
 
-
 	controls.update();//orbit
-	move(patuve)//movimentos do pato
 	sons()
+	move(patuve)//movimentos do pato
 	renderer.render(scene, camera)//recria a cena
 	requestAnimationFrame(animate)
+
 }
 
 window.addEventListener('click', evento => {
@@ -178,10 +179,9 @@ function sons() {
 	if (theme && theme.paused) {
 		theme.currenttime = 0
 		theme.play()
-		velocidade = 5
 	}
 
-	if (wolf && wolf.paused && Math.random() > 0.99997 && Math.random() > 0.5) {
+	if (wolf && wolf.paused && Math.random() > 0.99 && Math.random() >0.5) {
 		wolf.currenttime = 0
 		wolf.play()
 		velocidade = 5
@@ -193,6 +193,7 @@ function sons() {
 		passaro.currenttime = 0
 		passaro.play()
 	}
+
 	if (hasKey("KeyD") || hasKey("KeyS") || hasKey("KeyA") || hasKey("KeyW")) {
 		walk.currenttime = 0
 		walk.play()
