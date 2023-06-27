@@ -133,10 +133,10 @@ function move(patao) {
 				patao.position.y -= gravidade
 			}
 			else {
-				chao = true
+				chao = true // começa a cair
 			}
 		}
-		else {
+		else {//caindo
 			if (patao.position.y > 0)
 				patao.position.y += gravidade
 			else
@@ -144,8 +144,10 @@ function move(patao) {
 
 		}
 	}
-	if (patao.position.x > -50 && patao.position.x < 250
-		&& patao.position.z > 120 && patao.position.z < 250)
+	console.log("x: " + patao.position.x)
+	console.log(patao.position.z)
+	if (patao.position.x > -120 && patao.position.x < 800
+		&& patao.position.z > 450 && patao.position.z < 800)
 		patao.position.y = -10
 }
 
@@ -155,7 +157,7 @@ function sons() {
 		theme.play()
 	}
 
-	if (wolf && wolf.paused && Math.random() > 0.99 && Math.random() >0.5) {
+	if (wolf && wolf.paused && Math.random() > 0.9979) {
 		wolf.currenttime = 0
 		wolf.play()
 		velocidade = 5
@@ -169,11 +171,11 @@ function sons() {
 	}
 
 	if (hasKey("KeyD") || hasKey("KeyS") || hasKey("KeyA") || hasKey("KeyW")) {
-		walk.currenttime = 0
 		walk.play()
 	}
 	else {
 		walk.pause();
+		walk.currenttime = 0
 	}
 }
 
